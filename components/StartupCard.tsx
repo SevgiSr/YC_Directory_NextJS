@@ -4,6 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button"; //populated by shadcn command
 import React from "react";
+import { Author, Startup } from "@/sanity/types";
+
+// sanity tool can generate StartupCardType type automatically
+/* 
+> yarn add -D sanity
+> yarn sanity schema extract --path=./sanity/extract.json
+
+create sanity-typegen.json file
+
+> yarn sanity typegen generate
+
+TO not have to run all these after each change to schemas, add these to package.json under scripts:
+
+   "predev": "yarn typegen",
+   "prebuild": "yarn typegen",
+   "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
+
+now you can run:
+
+> yarn typegen
+
+*/
+
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const {

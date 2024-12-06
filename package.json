@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predev": "yarn typegen",
+    "prebuild": "yarn typegen",
+    "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
   },
   "packageManager": "yarn@1.22.19",
   "overrides": {
@@ -27,7 +30,7 @@
     "next-sanity": "^9.8.3-canary.1",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "sanity": "3",
+    "sanity": "^3.66.0",
     "sanity-plugin-markdown": "^5.0.0",
     "styled-components": "6",
     "tailwind-merge": "^2.5.5",
